@@ -9,7 +9,7 @@ const board = ref([
   ['', '', ''],
 ]);
 
-const CalculateWinner = (board) => {
+const CalculateWinner = (board: any) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -31,7 +31,7 @@ const CalculateWinner = (board) => {
 
 const winner = computed(() => CalculateWinner(board.value.flat()));
 
-const MakeMove = (x, y)  => {
+const MakeMove = (x: number, y: number)  => {
   if (winner.value) return;
 
   if (board.value[x][y]) return;
@@ -67,13 +67,15 @@ const ResetGame = () => {
           @click="MakeMove(x, y)"
           :class="`border border-white w-24 h-24 hover:bg-gray-700 flex items-center 
             justify-center material-icons-outlined text-4xl cursor-pointer 
-            ${cell === 'X' ? 'text-red-500' : 'text-blue-400'}`"
+            ${cell === 'X' ? 'text-red-400' : 'text-blue-400'}`"
         >
 					{{ cell === 'X' ? 'X' : cell === 'O' ? 'O' : '' }}
         </div>
       </div>
     </div>
-    <h2 v-if="winner" class="text-4xl font-bold mb-8">Player <span class="text-purple-600">{{ winner }}</span> wins!</h2>
+    <h2 v-if="winner" class="text-4xl font-bold mb-8">
+      Player <span class="text-purple-700">{{ winner }}</span> wins!
+    </h2>
     <button @click="ResetGame" 
       class="px-4 py-2 bg-red-500 
       rounded uppercase font-bold 
