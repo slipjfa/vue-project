@@ -1,4 +1,5 @@
 import { test, expect } from "vitest";
+import { CalculateWinner } from "../App.vue"
 
 function sum(...nums) {
   return nums.reduce((a, b) => a+b, 0);
